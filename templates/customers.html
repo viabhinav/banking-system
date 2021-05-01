@@ -7,8 +7,12 @@
     <br>
     <table>
     <tr><th>Customer Name</th><th>Balance</th></tr>
-    {% for cust in customers %}
-    <tr><td>{{cust}}</td><td>{{customers[cust]}}</td></tr>
+    {% for cust, m in customers %}
+    {% for mx in m %}
+    {% for xust in cust %}
+    <tr><td>{{xust}}</td><td>{{mx}}</td></tr>
+    {% endfor %}
+    {% endfor %}
     {% endfor %}
 {% endblock %}
 {% block heading %}

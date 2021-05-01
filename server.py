@@ -14,22 +14,23 @@ for customer in customers:
         db.set(customer, randint(5000,10000))
 
 cust = dict()
+bal = list()
 
 for customer in customers:
-    cust[customer] = db.get(customer)
-
+    bal.append(db.get(customer))
+print(list(zip(cust,bal)))
 @app.route('/')
 def index():
     return render_template('index.html')
 
 @app.route('/customers')
 def view_customers():
-    return render_template('customers.html', customers=customers)
+    return render_template('customers.html', customers=customers, bal=bal)
 
 
 @app.route('/transaction-page')
 def transactionpage():
-    return render_template("transactionpage.html", customers=cust, i=1)
+    return render_template("transactionpage.html", customers=list(zip(cust,bal)), i=1)
 
 @app.route('/processtran',methods = ['GET'])
 def processtrans():
