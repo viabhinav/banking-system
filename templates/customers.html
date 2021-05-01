@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <br>
+    <h1>{% block title %} View Customers {% endblock %}</h1>
+    <br>
+    <br>
+    <table>
+    <tr><th>Customer Name</th></tr>
+    {% for cust in customers %}
+    <tr><td>{{cust}}</td></tr>
+    {% endfor %}
+{% endblock %}
+{% block heading %}
+    TSF Bank
+{% endblock %}
+{% block item1 %}
+    Dashboard
+{% endblock %}
+{% block item1href %}
+    "dashboard"
+{% endblock %}
+{% block item2 %}
+    Make a Transaction
+{% endblock %}
+{% block item2href %}
+    "transaction-page"
+{% endblock %}
