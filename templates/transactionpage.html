@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br>
+    <h1>{% block title %} Transaction Page {% endblock %}</h1>
+    <br>
+    <br>
+    <form name="detailsp" action="processtran" method="GET">
+    <h5>Send Money From:    </h5>
+    <select name="from" id="from">
+        {% for cust in customers %}
+        <option >{{cust}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <h5>Send Money To:    </h5>
+    <select name="to" id="to">
+        {% for cust in customers %}
+        <option >{{cust}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <h5>Enter Amount: </h5><input type = "number" name="amount" id="amount">
+    <br>
+    <br>
+    <input type="submit">X</input>
+    </form>
+{% endblock %}
+{% block heading %}
+    TSF Bank
+{% endblock %}
+{% block item1 %}
+    View All Customers
+{% endblock %}
+{% block item1href %}
+    "customers"
+{% endblock %}
+{% block item2 %}
+    Make a Transaction
+{% endblock %}
+{% block item2href %}
+    "transaction-page"
+{% endblock %}

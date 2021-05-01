@@ -6,9 +6,9 @@
     <br>
     <br>
     <table>
-    <tr><th>Customer Name</th></tr>
+    <tr><th>Customer Name</th><th>Balance</th></tr>
     {% for cust in customers %}
-    <tr><td>{{cust}}</td></tr>
+    <tr><td>{{cust}}</td><td>{{customers[cust]}}</td></tr>
     {% endfor %}
 {% endblock %}
 {% block heading %}
