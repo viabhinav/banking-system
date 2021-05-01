@@ -1,3 +1,3 @@
-"flask" 
-"pickledb" 
-"werkzeug" 
+flask
+pickledb 
+werkzeug 
