@@ -18,6 +18,8 @@ bal = list()
 
 for customer in customers:
     bal.append(db.get(customer))
+    cust[customer] = db.get(customer)
+
 print(list(zip(cust,bal)))
 @app.route('/')
 def index():
@@ -25,12 +27,12 @@ def index():
 
 @app.route('/customers')
 def view_customers():
-    return render_template('customers.html', customers=customers, bal=bal)
+    return render_template('customers.html', customers=cust)
 
 
 @app.route('/transaction-page')
 def transactionpage():
-    return render_template("transactionpage.html", customers=list(zip(cust,bal)), i=1)
+    return render_template("transactionpage.html", customers=customers, i=1)
 
 @app.route('/processtran',methods = ['GET'])
 def processtrans():
@@ -62,4 +64,4 @@ def processtrans():
         return render_template("successfultrans.html", rembal = int(db.get(fromx)))
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1',port=8000)
+    app.run(host='0.0.0.0',port=80)
