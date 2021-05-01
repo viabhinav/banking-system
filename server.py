@@ -7,11 +7,11 @@ db = dbms.load("customers.json", True)
 
 app = Flask(__name__)
 
-customers = ['Abhinav Vishnu', 'Kalpit Veerwal', 'Bill Gates']
+customers = ['Abhilasha Gupta', 'Arohi Kumar', 'Peter Gupta', 'Akash Kumar','Eliza Kumari','Gyan Sarita', 'Umesh Prasad','Siddhartha Raj','Nandini Arya','Ujwal Sahni']
 
 for customer in customers:
     if str(db.get(customer)) == 'False':
-        db.set(customer, randint(500,1000))
+        db.set(customer, randint(5000,10000))
 
 cust = dict()
 
@@ -54,11 +54,11 @@ def processtrans():
     if (str(db.get(fromx))=='False'):
         return "Sorry, this account doesn't exist"
     elif (db.get(fromx)<int(amount)):
-        return "Sorry, your account has not enough balance :("
+        return render_template("norembal.html", rembal = int(db.get(fromx)))
     else:
         db.set(fromx,(int(db.get(fromx))-int(amount)))
         db.set(to,(int(db.get(to))+int(amount)))
-        return "Successful transfer :)"
+        return render_template("successfultrans.html", rembal = int(db.get(fromx)))
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1',port=9000)
