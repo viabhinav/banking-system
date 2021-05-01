@@ -2,23 +2,19 @@
 
 {% block content %}
     <br>
-    <h1>{% block title %} View Customers {% endblock %}</h1>
+    <h1>Customer info for: {{cust}}</h1>
     <br>
     <br>
-    <table>
-    <tr><th>Customer Name</th><th>Balance</th></tr>
-    {% for cust in customers %}
-    <tr><td><a href = "{{cust}}">{{cust}}</a></td><td>{{customers[cust]}}</td></tr>
-    {% endfor %}
+    <h5>Balance is: <strong>{{bal}}</strong></h5>
 {% endblock %}
 {% block heading %}
     TSF Bank
 {% endblock %}
 {% block item1 %}
-    Dashboard
+    View All Customers
 {% endblock %}
 {% block item1href %}
-    "dashboard"
+    "customers"
 {% endblock %}
 {% block item2 %}
     Make a Transaction
