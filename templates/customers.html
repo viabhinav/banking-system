@@ -2,13 +2,18 @@
 
 {% block content %}
     <br>
+    <style>
+        a:hover{
+            color: black;
+        }
+    </style>
     <h1>{% block title %} View Customers {% endblock %}</h1>
     <br>
     <br>
-    <table>
+    <table id="customers">
     <tr><th>Customer Name</th><th>Balance</th></tr>
     {% for cust in customers %}
-    <tr><td><a href = "{{cust}}">{{cust}}</a></td><td>{{customers[cust]}}</td></tr>
+    <tr onclick="window.location.href = '/info/{{cust}}'" onmouseover="(document.getElementById('{{cust}}')).style.color='#000000'" onmouseout="(document.getElementById('{{cust}}')).style.color='#FFFFFF'"><td><a class="cust" id='{{cust}}' style="color:white;">{{cust}}</a></td><td>{{customers[cust]}}</td></tr>
     {% endfor %}
 {% endblock %}
 {% block heading %}

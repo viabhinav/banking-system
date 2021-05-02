@@ -2,11 +2,10 @@
 
 {% block content %}
     <br>
-    <h1>Customer info for: {{cust}}</h1>
-    <br>
-    <br>
-    <h5>Balance is: <strong>{{bal}}</strong></h5>
-{% endblock %}
+    <h1 style="color:white;">{% block title %} Customer Info of: {{name}}{% endblock %}</h1>
+    <h3 style="color:white;">Balance: {{bal}}</h3>
+    
+    {% endblock %}
 {% block heading %}
     TSF Bank
 {% endblock %}
@@ -20,5 +19,5 @@
     Make a Transaction
 {% endblock %}
 {% block item2href %}
-    "transaction-page"
+    "customers"
 {% endblock %}

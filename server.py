@@ -1,36 +1,29 @@
-from flask import Flask, render_template, request, make_response
+from flask import Flask, render_template, request
 import pickledb as dbms
 from werkzeug.exceptions import abort
 from random import randint
 
 db = dbms.load("customers.json", True)
-trans = dbms.load("transactions.json", True)
 
 app = Flask(__name__)
 
-customers = db.getall()
+customers = ['Abhilasha Gupta', 'Arohi Kumar', 'Peter Gupta', 'Akash Kumar','Eliza Kumari','Gyan Sarita', 'Umesh Prasad','Siddhartha Raj','Nandini Arya','Ujwal Sahni']
+
+for customer in customers:
+    if str(db.get(customer)) == 'False':
+        db.set(customer, randint(5000,10000))
 
 cust = dict()
 bal = list()
-
-transactions.dcreate("TRANS")
 
 for customer in customers:
     bal.append(db.get(customer))
     cust[customer] = db.get(customer)
 
-def refreshcust():
-    customers = db.getall()
-    for customer in customers:
-        cust[customer] = db.get(customer)
-    
-
 print(list(zip(cust,bal)))
 @app.route('/')
 def index():
-    #return render_template('index.html')
-    resp = make_response(render_template('index.html'))
-    return resp
+    return render_template('index.html')
 
 @app.route('/customers')
 def view_customers():
@@ -62,7 +55,7 @@ def processtrans():
     print(to)
     amount = request.args.get('amount')
     if (str(db.get(fromx))=='False'):
-        return "Sorry, this account doesn't exist"
+        return render_template("noaccount.html")
     elif (db.get(fromx)<int(amount)):
         return render_template("norembal.html", rembal = int(db.get(fromx)))
     else:
@@ -70,13 +63,10 @@ def processtrans():
         db.set(to,(int(db.get(to))+int(amount)))
         return render_template("successfultrans.html", rembal = int(db.get(fromx)))
 
-
-@app.route('/<string:name>')
-def custinfo(name):
-  if str(db.get(name))=='False':
-      return render_template('custnotfound.html')
-  else: 
-      return render_template('customerinfo.html', cust=name, bal = db.get(name))
+@app.route('/info/<string:customerx>')
+def custinfo(customerx):
+    customern = customerx.replace('+', ' ')
+    return render_template("customerinfo.html", name=customern, bal=db.get(customern))
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=80)
+    app.run(host='0.0.0.0',port=8000)
