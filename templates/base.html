@@ -24,13 +24,57 @@
         background-color: black;
         color: white;
       }
+      
       </style>
+      <script>
+        (function($, window){
+  $(function() {
+    let arrowWidth = 30;
+
+    $.fn.resizeselect = function(settings) {  
+      return this.each(function() { 
+
+        $(this).change(function(){
+          let $this = $(this);
+
+          // get font-weight, font-size, and font-family
+          let style = window.getComputedStyle(this)
+          let { fontWeight, fontSize, fontFamily } = style
+
+          // create test element
+          let text = $this.find("option:selected").text();
+          let $test = $("<span>").html(text).css({
+            "font-size": fontSize, 
+            "font-weight": fontWeight, 
+            "font-family": fontFamily,
+            "visibility": "hidden" // prevents FOUC
+          });
+
+          // add to body, get width, and get out
+          $test.appendTo($this.parent());
+          let width = $test.width();
+          $test.remove();
+
+          // set select width
+          $this.width(width + arrowWidth);
+
+          // run on start
+        }).change();
+
+      });
+    };
+
+    // run by default
+    $("select.resizeselect").resizeselect();                       
+  })
+})(jQuery, window);
+      </script>
     <!-- Bootstrap CSS -->
     
 		<link rel="stylesheet" href="css/ionicons.min.css">
 		<link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-azvvU9xKluwHFJ0Cpgtf0CYzK7zgtOznnzxV4924X1w=" crossorigin="anonymous">
     {% block scripts %} {% endblock %}
 
     <title>{% block title %} {% endblock %}</title>

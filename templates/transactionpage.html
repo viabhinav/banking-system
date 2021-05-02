@@ -6,14 +6,14 @@
     <br>
     <form name="detailsp" action="processtran" method="GET">
     <h5>Send Money From:    </h5>
-    <select name="from" id="from">
+    <select name="from" id="from" class="form-control">
         {% for cust in customers %}
         <option >{{cust}}</option>
         {% endfor %}
     </select>
     <br>
     <h5>Send Money To:    </h5>
-    <select name="to" id="to">
+    <select name="to" id="to" class="form-control">
         {% for cust in customers %}
         <option >{{cust}}</option>
         {% endfor %}
