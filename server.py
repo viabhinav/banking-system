@@ -83,7 +83,7 @@ def custinfo(customerx):
 
 @app.route('/login')
 def login():
-    resp = make_response(render_template("login.html"))
+    resp = make_response(render_template("login.html", customers=customers))
     return resp
 
 @app.route('/processlogin', methods = ['GET'])

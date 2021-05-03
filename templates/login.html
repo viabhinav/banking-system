@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br>
+    <h1>{% block title %} Transaction Page {% endblock %}</h1>
+    <br>
+    <br>
+    <form action="/processlogin" method="GET">
+    
+    <br>
+    <br>
+    <p class="lead">Select User:   </p>
+    <select name="username" id="username" class="form-control">
+        {% for cust in customers %}
+        {% if h %}
+        {% if h == cust %}
+        <option selected>{{cust}}</option>
+        {% else %}
+        <option>{{cust}}</option>
+        {% endif %}
+        {% else %}
+        <option>{{cust}}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <button type="submit" style="text-align:left; width: fit-content; background-color: black;" class="btn mb-2 mb-md-0 btn-primary btn-block">Initiate Transaction
+    </button>
+    </form>
+{% endblock %}
+{% block heading %}
+    TSF Bank
+{% endblock %}
+{% block item1 %}
+    View All Customers
+{% endblock %}
+{% block item1href %}
+    "customers"
+{% endblock %}
+{% block item2 %}
+    Make a Transaction
+{% endblock %}
+{% block item2href %}
+    "transaction-page"
+{% endblock %}
