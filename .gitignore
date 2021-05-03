@@ -5,7 +5,6 @@ __pycache__/
 
 # C extensions
 *.so
-*.json
 # Distribution / packaging
 .Python
 build/
@@ -33,6 +32,7 @@ MANIFEST
 *.manifest
 *.spec
 *.json
+dist/
 
 # Installer logs
 pip-log.txt
