@@ -30,9 +30,10 @@ def view_customers():
     return render_template('customers.html', customers=cust)
 
 
-@app.route('/transaction-page')
+@app.route('/transaction-page', methods = ['GET'])
 def transactionpage():
-    return render_template("transactionpage.html", customers=customers, i=1)
+    return render_template("transactionpage.html", customers=customers, i=1, h="s")
+
 
 @app.route('/processtran',methods = ['GET'])
 def processtrans():
@@ -56,8 +57,10 @@ def processtrans():
     amount = request.args.get('amount')
     if (str(db.get(fromx))=='False'):
         return render_template("noaccount.html")
-    elif (db.get(fromx)<int(amount)):
+    elif (db.get(fromx)<=int(amount)):
         return render_template("norembal.html", rembal = int(db.get(fromx)))
+    elif (fromx==to):
+        return render_template("nosameacc.html")
     else:
         db.set(fromx,(int(db.get(fromx))-int(amount)))
         db.set(to,(int(db.get(to))+int(amount)))

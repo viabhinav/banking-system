@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <br>
-    <h1 style="color:black;">{% block title %} Customer Info of: {{name}}{% endblock %}</h1>
-    <h3 style="color:black;">Balance: {{bal}}</h3>
-    {% endblock %}
+<div class="jumbotron text-center" style="margin-bottom: 0">
+            <h1 class="display-3">You cannot transact to same account.</h1>
+            <p class="lead"><strong>Please check your accounts</strong></p>
+{% endblock %}
 {% block heading %}
     TSF Bank
 {% endblock %}

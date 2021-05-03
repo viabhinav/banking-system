@@ -2,11 +2,11 @@
 
 {% block content %}
     <br>
-    <h1 style="color:white;">{% block title %} Welcome to Bank Dashboard {% endblock %}</h1>
-    <h3 style="color:white;">Click a option in the menu bar</h3>
+    <h1 style="color:black;">{% block title %} Welcome to Bank Dashboard {% endblock %}</h1>
+    <h3 style="color:black;">Click a option in the menu bar</h3>
     <br>
     <br>
-    <button type="button" style="text-align:left; width: fit-content; background-color: black;" class="btn mb-2 mb-md-0 btn-primary btn-block">View All Customers
+    <button type="button" onclick="window.location.href = '/transaction-page'" href style="text-align:left; width: fit-content; background-color: black;" class="btn mb-2 mb-md-0 btn-primary btn-block">View All Customers
     </button>
     {% endblock %}
 {% block heading %}
@@ -22,5 +22,5 @@
     Make a Transaction
 {% endblock %}
 {% block item2href %}
-    "customers"
+    "transaction-page"
 {% endblock %}
