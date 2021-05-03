@@ -7,18 +7,21 @@
     <form name="detailsp" action="processtran" method="GET">
     <h5>Send Money From:    </h5>
     <select name="from" id="from" class="form-control">
-        {% for cust in customers %}
-        <option >{{cust}}</option>
-        {% endfor %}
+        <option selected>{{user}}</option>
     </select>
-    {% if h %}
-    x
-    {% endif %}
     <br>
     <h5>Send Money To:    </h5>
     <select name="to" id="to" class="form-control">
         {% for cust in customers %}
-        <option >{{cust}}</option>
+        {% if h %}
+        {% if h == cust %}
+        <option selected>{{cust}}</option>
+        {% else %}
+        <option>{{cust}}</option>
+        {% endif %}
+        {% else %}
+        <option>{{cust}}</option>
+        {% endif %}
         {% endfor %}
     </select>
     <br>

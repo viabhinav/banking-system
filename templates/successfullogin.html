@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron text-center" style="margin-bottom: 0">
+            <h1 class="display-3">Successful Login</h1>
+            <p class="lead">You have been logged in as <strong>{{name}}</strong></p>
+{% endblock %}
+{% block heading %}
+    TSF Bank
+{% endblock %}
+{% block item1 %}
+    View All Customers
+{% endblock %}
+{% block item1href %}
+    "customers"
+{% endblock %}
+{% block item2 %}
+    Make a Transaction
+{% endblock %}
+{% block item2href %}
+    "transaction-page"
+{% endblock %}

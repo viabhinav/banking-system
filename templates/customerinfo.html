@@ -4,6 +4,9 @@
     <br>
     <h1 style="color:black;">{% block title %} Customer Info of: {{name}}{% endblock %}</h1>
     <h3 style="color:black;">Balance: {{bal}}</h3>
+    <br><br>
+      <button type="button" onclick="window.location.href = '{{ url_for('transactionpage') }}?to={{name}}'" href style="text-align:left; width: fit-content; background-color: black;" class="btn mb-2 mb-md-0 btn-primary btn-block">Do Transaction
+    </button>
     {% endblock %}
 {% block heading %}
     TSF Bank
@@ -12,11 +15,11 @@
     View All Customers
 {% endblock %}
 {% block item1href %}
-    "customers"
+    "/customers"
 {% endblock %}
 {% block item2 %}
     Make a Transaction
 {% endblock %}
 {% block item2href %}
-    "transaction-page"
+    "/transaction-page"
 {% endblock %}
