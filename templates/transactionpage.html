@@ -4,7 +4,7 @@
     <h1>{% block title %} Transaction Page {% endblock %}</h1>
     <br>
     <br>
-    <form name="detailsp" action="processtran" method="GET">
+    <form name="detailsp" action="processtran" method="POST">
     <h5>Send Money From:    </h5>
     <select name="from" id="from" class="form-control">
         <option selected>{{user}}</option>
@@ -28,6 +28,7 @@
     <h5>Enter Amount: </h5><input type = "number" name="amount" id="amount">
     <br>
     <br>
+    <p class = "lead">Solve Captcha:      </p><img src="/static/{{captcha}}" alt="ahctpac"><br><input type="hidden" name="token" id="token" value="{{token}}"><br><input name="captcha" id="captcha" type="text"><br><br>
     <button type="submit" style="text-align:left; width: fit-content; background-color: black;" class="btn mb-2 mb-md-0 btn-primary btn-block">Initiate Transaction
     </button>
     </form>
